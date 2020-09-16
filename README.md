@@ -13,10 +13,10 @@
 - has_many :comments
 
 ## posts テーブル
-| Column       | Type       | Options                      |
-| ------------ | ---------- | ---------------------------- |
-| title        | string     | null:false                   |
-| text         | text       | null:false                   |
+| Column       | Type       | Options     |
+| ------------ | ---------- | ----------- |
+| title        | string     | null:false  |
+| text         | text       | null:false  |
 
 ### Association
 - has_many :comments
@@ -25,10 +25,10 @@
 - belongs_to :user
 
 ## goods テーブル
-| Column          | Type       | Options                      |
-| --------------- | ---------- | ---------------------------- |
-| post_id         | references | null:false, foreign_key:true |
-| user_id         | references | null:false, foreign_key:true |
+| Column     | Type       | Options                      |
+| ---------- | ---------- | ---------------------------- |
+| post_id    | references | null:false, foreign_key:true |
+| user_id    | references | null:false, foreign_key:true |
 
 ### Association
 - belongs_to :user
@@ -46,10 +46,10 @@
 - belongs_to :post
 
 ## post_tags テーブル
-| Column          | Type       | Options                      |
-| --------------- | ---------- | ---------------------------- |
-| post_id         | references | null:false, foreign_key:true |
-| user_id         | references | null:false, foreign_key:true |
+| Column   | Type       | Options                      |
+| -------- | ---------- | ---------------------------- |
+| post_id  | references | null:false, foreign_key:true |
+| user_id  | references | null:false, foreign_key:true |
 
 ### Association
 - belongs_to :post
