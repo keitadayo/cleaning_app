@@ -1,24 +1,65 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
+| Column          | Type     | Options     |
+| --------------- | -------- | ----------- |
+| nickname        | string   | null:false  |
+| email           | string   | null:false  |
+| password        | string   | null:false  |
 
-Things you may want to cover:
+### Association
+- has_many :posts
+- has_many :goods
+- has_many :comments
 
-* Ruby version
+## posts テーブル
+| Column       | Type       | Options                      |
+| ------------ | ---------- | ---------------------------- |
+| title        | string     | null:false                   |
+| text         | text       | null:false                   |
 
-* System dependencies
+### Association
+- has_many :comments
+- has_many :post_tags
+- has_many :goods
+- belongs_to :user
 
-* Configuration
+## goods テーブル
+| Column          | Type       | Options                      |
+| --------------- | ---------- | ---------------------------- |
+| post_id         | references | null:false, foreign_key:true |
+| user_id         | references | null:false, foreign_key:true |
 
-* Database creation
+### Association
+- belongs_to :user
+- belongs_to :post
 
-* Database initialization
+## comments テーブル
+| Column      | Type       | Options                      |
+| ----------- | ---------- | ---------------------------- |
+| text        | text       | null:false                   |
+| user_id     | references | null:false, foreign_key:true |
+| post_id     | references | null:false, foreign_key:true |
 
-* How to run the test suite
+### Association
+- belongs_to :user
+- belongs_to :post
 
-* Services (job queues, cache servers, search engines, etc.)
+## post_tags テーブル
+| Column          | Type       | Options                      |
+| --------------- | ---------- | ---------------------------- |
+| post_id         | references | null:false, foreign_key:true |
+| user_id         | references | null:false, foreign_key:true |
 
-* Deployment instructions
+### Association
+- belongs_to :post
+- belongs_to :tag
 
-* ...
+## tags テーブル
+| Column          | Type       | Options                      |
+| --------------- | ---------- | ---------------------------- |
+| post_id         | references | null:false, foreign_key:true |
+| user_id         | references | null:false, foreign_key:true |
+
+## Association
+- has_many :post_tags
