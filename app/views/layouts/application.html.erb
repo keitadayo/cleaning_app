@@ -1,15 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CleaningApp</title>
+    <title>くりんくりん</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+<header class='header'>
+  <h1 class='title'><a href="/">くりんくりん</a></h1>
+    <% if user_signed_in? %>
+      <nav class="head-menu">
+          <ul class='head-lists'>
+            <li class='head-list'>
+              <span><%= current_user.nickname %></span>
+            </li>
+            <li class='head-list'>
+              <%= link_to "マイページ", "/users/#{current_user.id}" %>
+            </li>
+            <li class='head-list'>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </li>
+          </ul>
+      </nav>
+    <% else %>
+        <nav class="head-menu">
+          <ul class='head-lists'>
+            <li class='head-list'>
+              <%= link_to 'ログイン', new_user_session_path %>
+            </li>
+            <li class='head-list'>
+              <%= link_to '新規登録', new_user_path %>
+            </li>
+          </ul>
+        </nav>
+    <% end %>
+</header>
+      <%= yield %>
+    <footer>
+      <p>Copyright</p>
+    </footer>
   </body>
 </html>
