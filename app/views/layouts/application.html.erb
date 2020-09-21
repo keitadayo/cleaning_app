@@ -24,6 +24,9 @@
             <li class='head-list'>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
             </li>
+            <li class='head-list'>
+              <%= link_to "投稿する", new_post_path %>
+            </li>
           </ul>
       </nav>
     <% else %>

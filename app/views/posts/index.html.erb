@@ -1,0 +1,28 @@
+<div class="wr">
+  <h2 class="title">一覧</h2>
+
+  <% @posts.each do |post| %>
+
+    <div class="enclosure">
+
+      <div class="post-title">
+        <%= post.title %>
+      </div>
+
+      <div class="post-user">
+        <%= post.user.nickname %>
+      </div>
+
+      <div class="post-text">
+        <%= post.text %>
+      </div>
+
+      <div class="post-img">
+        <% post.images.each do |image| %>
+         <%= image_tag image, class:'images' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+</div>

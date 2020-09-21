@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :sns_credentials
+  has_many :posts
+  has_many :goods
+  has_many :comments
+
 
   validates :nickname, presence: true
   mix_case = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
