@@ -22,6 +22,10 @@ class User < ApplicationRecord
     validates :password, format: { with: mix_case, message: 'パスワードは英数字混合で入力してください。' }
   end
 
+  def already_gooded?(post)
+    self.goods.exists?(post_id: post.id)
+  end
+
   def self.from_omniauth(auth)
     sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
     user = User.where(email: auth.info.email).first_or_initialize(

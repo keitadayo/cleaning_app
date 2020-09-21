@@ -1,28 +1,38 @@
-<div class="wr">
+<div class="post-contents">
   <h2 class="title">一覧</h2>
+  <ul class='post-lists'>
+    <% @posts.each do |post| %>
+      <li class='list'>
+      <%= link_to post_path(post.id), method: :get do %>
+        <div class="enclosure">
+          <div class="post-title">
+            <%= post.title %>
+          </div>
 
-  <% @posts.each do |post| %>
+          <div class="post-user">
+            <%= post.user.nickname %>
+          </div>
 
-    <div class="enclosure">
+          <div class="post-text">
+            <%= post.text %>
+          </div>
 
-      <div class="post-title">
-        <%= post.title %>
-      </div>
+          <div class="post-img">
+            <% post.images.each do |image| %>
+              <%= image_tag image, class:'images' %>
+            <% end %>
+          </div>
+          <% unless current_user.already_gooded?(post)%>
+            <div class='good-btn'>
+              <%= link_to '☆', post_goods_path(post.id), method: :post %>
+            </div>
+          <% else %>
+            <%= link_to '★', post_good_path(post.id, :id), method: :delete %><%= post.goods.count %>
+          <% end %>
 
-      <div class="post-user">
-        <%= post.user.nickname %>
-      </div>
-
-      <div class="post-text">
-        <%= post.text %>
-      </div>
-
-      <div class="post-img">
-        <% post.images.each do |image| %>
-         <%= image_tag image, class:'images' %>
+        </div>
         <% end %>
-      </div>
-    </div>
-  <% end %>
-
+      </li>
+    <% end %>
+  </ul>
 </div>

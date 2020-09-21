@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   }
   root 'posts#index'  
   resources :users, only: :new
-  resources :posts
+  resources :posts do
+    resources :goods, only: [:create, :destroy]
+  end
 end

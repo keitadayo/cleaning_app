@@ -15,7 +15,7 @@
 
 .preview-img {
   height: 50vh;
-  width: 60vw;
+  max-height: 150px;
   background-color: #a4e0f7;
   object-fit: contain;
 }
