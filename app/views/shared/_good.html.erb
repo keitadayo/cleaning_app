@@ -1,0 +1,7 @@
+<% unless current_user.already_gooded?(post)%>
+  <div class='good'>
+    <%= link_to '☆', post_goods_path(post.id), remote: true, method: :post %>
+  </div>
+<% else %>
+  <%= link_to '★', post_good_path(post.id, :id), remote: true, method: :delete %><%= post.goods.count %>
+<% end %>

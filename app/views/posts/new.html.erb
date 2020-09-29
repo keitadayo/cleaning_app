@@ -2,8 +2,8 @@
       <h2>投稿する</h2>
 
   <div class="enclosure">
-    <%= form_with(model: @post, method: :post, local: true) do |f| %>
-    <%= render "shared/error_messages", model: f.object %>
+    <%= form_with(model: @post, url: posts_path, method: :post, local: true) do |f| %>
+    <%= render "shared/error_messages", model: @post %>
 
 <%= f.file_field :images, name: 'post[images][]', id: 'post_image' %>
    <div id="image-list"></div>
@@ -14,7 +14,12 @@
 
     <div class="field">
       <%= f.label :title %><br/>
-      <%= f.text_area :title, placeholder:"TITLE", maxlength:"40" %>
+      <%= f.text_area :title, placeholder:"TITLE", maxlength:"40" ,rows: "1" %>
+    </div>
+
+    <div class="field", id='tag-field'>
+      <%= f.label :name, "Tag" %><br/>
+      <%= f.text_field :name, class:"input-tag" %>
     </div>
 
     <div class="field">
@@ -23,7 +28,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "SEND" %>
+      <%= f.submit "SEND" ,class:'btn' %>
     </div>
     <% end %>
   </div>

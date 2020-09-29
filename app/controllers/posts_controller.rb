@@ -10,8 +10,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save
-      redirect_to root_path
+    if @post.valid?
+      @post.save
+      return redirect_to root_path
     else
       render :new
     end
@@ -19,10 +20,16 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comments = @post.comments.includes(:user)
   end
 
   def edit
     
+  end
+
+  def search
+    @posts = Post.search(params[:keyword])
   end
 
 

@@ -1,3 +1,4 @@
+
 .post-contents {
   display: flex;
   justify-content: space-around;
@@ -18,7 +19,7 @@
   display: flex;
 }
 
-.post-img { 
-  /* max-width: 150px; */
-  /* max-height: 150px; */
+.post-images { 
+  height: 50vh;
+  max-height: 150px;
 }

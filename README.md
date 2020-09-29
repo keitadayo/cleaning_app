@@ -20,7 +20,7 @@
 
 ### Association
 - has_many :comments
-- has_many :post_tags
+- has_many :post_tag
 - has_many :goods
 - belongs_to :user
 
@@ -62,4 +62,4 @@
 | user_id         | references | null:false, foreign_key:true |
 
 ## Association
-- has_many :post_tags
+- has_many :post_tag

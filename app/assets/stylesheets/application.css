@@ -2,7 +2,7 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheetsﾃｴt, or any plugin's
  * vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
@@ -24,14 +24,20 @@ a {
 }
 
 body {
+  background-image: url('sky_00069.jpg');
+  background-size: cover;
+  background-repeat: repeat;
+  height: 100vh;
   font-family: 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
 }
 
+
+
  header.header { 
   background-color: #a4e0f7;
-  top: 0;
-  width: 100%;
-  padding: 30px 4% 10px 0;
+
+  width: 100vw;
+  padding: 30px 0 10px 0;
   display: flex;
   align-items: center;
   box-shadow:0px 0px 7px 2px rgba(165,165,165,0.6);
@@ -57,3 +63,41 @@ footer {
   color: #D8D8D8;
 }
 
+.btn {
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 2px solid #57C3E9;
+  color: #57C3E9;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.btn:hover {
+  border-color: #9bdbf2;
+  color: #9bdbf2;
+}
+
+.enclosure {
+  padding: 10px;
+  background-color: #a4e0f7;
+  box-shadow:0px 0px 7px 2px rgba(165,165,165,0.6);
+  border-radius:6px 0px 6px 6px ;
+  border:1px solid #cccccc;
+}
+
+.wr {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.tag {
+  display: flex;
+}
+
+.search-form {
+  margin: 10px;
+}

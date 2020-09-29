@@ -17,9 +17,37 @@
 
       <div class="post-img">
         <% @post.images.each do |image| %>
-         <%= image_tag image, class:'images' %>
+         <%= image_tag image, class:'post-images' %>
         <% end %>
       </div>
+      <div id="#good-btn">
+        <%= render "shared/good", post: @post %>
+      </div>
+  </div>
+
+  <div class="enclosure">
+    <% if current_user %>
+      <%= form_with(model: [@post, @comment], local: true) do |f| %>
+          <%= render "shared/error_messages", model: @comment %>
+        <div class="field">
+          <%= f.text_area :text, placeholder: "コメントする", rows: "2" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "SEND", class: 'btn'%>
+        </div>
+      <% end %>
+    <% else %>
+      <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>
+    <% end %>
+      <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.text %>
+          </p>
+        <% end %>
+    </div>
   </div>
 
 </div>

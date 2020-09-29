@@ -1,0 +1,37 @@
+  <ul class='post-lists'>
+    <% @posts.each do |post| %>
+      <li class='list'>
+      <%= link_to post_path(post.id), method: :get do %>
+        <div class="enclosure">
+          <div class="post-title">
+            <%= post.title %>
+          </div>
+
+          <ul class="tag">
+            <li class="tag-list">
+              <% post.tags.each do |tag| %>
+                #<%=tag.name%>
+              <%end%>
+            </li>
+          </ul>
+          <div class="post-user">
+            <%= post.user.nickname %>
+          </div>
+
+          <div class="post-text">
+            <%= post.text %>
+          </div>
+
+          <div class="post-img">
+            <% post.images.each do |image| %>
+              <%= image_tag image, class:'post-images' %>
+            <% end %>
+          </div>
+      <div id="#good-btn">
+        <%= render "shared/good", post: @post %>
+      </div>
+        </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
